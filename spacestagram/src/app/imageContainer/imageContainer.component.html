@@ -1,0 +1,36 @@
+<h2>Nasa Images</h2>
+
+<mat-form-field appearance="fill" class="date-picker">
+    <mat-label>Choose a start date</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="start_date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<button mat-raised-button type="button" (click)="getData()">Get Images</button>
+
+<mat-spinner *ngIf="isLoading" class="spinner"></mat-spinner>
+
+<div *ngFor="let image of images">
+    <mat-card class="image-card">
+        <mat-card-header>
+            <mat-card-title>{{ image.title }}</mat-card-title>
+            <mat-card-subtitle>Date: {{ image.date }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <img class="nasa-image" mat-card-xl-image [src]="image.url">
+
+        <mat-card-content>
+        <p>
+            {{ image.explanation }}
+        </p>
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-raised-button color="accent" (click)="likeImage(image)">
+                {{image.isLiked ? 'Unlike' : 'Like'}}
+            </button>
+        </mat-card-actions>
+
+    </mat-card>
+</div>

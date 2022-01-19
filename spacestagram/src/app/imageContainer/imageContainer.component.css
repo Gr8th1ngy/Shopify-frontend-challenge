@@ -1,0 +1,12 @@
+.image-card {
+    max-width: 50%;
+}
+
+.mat-card {
+    background-color: whitesmoke;
+    margin: 1%;
+}
+
+.nasa-image, h2, .date-picker {
+    padding: 1%;
+}
